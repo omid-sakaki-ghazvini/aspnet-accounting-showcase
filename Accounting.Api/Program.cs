@@ -1,3 +1,4 @@
+using Accounting.Api.Endpoints;
 using Accounting.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,12 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 // Services
 // ============================================================
 
-// DbContext
 builder.Services.AddDbContext<AccountingDbContext>(options =>
     options.UseSqlite(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// OpenAPI / Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -41,5 +40,10 @@ app.MapGet("/", () => new
     Author = "Omid Sakaki",
     Status = "Running"
 });
+
+// ثبت Endpoints
+app.MapAccountEndpoints();
+app.MapInvoiceEndpoints();
+app.MapJournalEntryEndpoints();
 
 app.Run();
