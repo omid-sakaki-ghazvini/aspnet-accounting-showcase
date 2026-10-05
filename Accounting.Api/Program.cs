@@ -30,6 +30,19 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // ============================================================
+// Seed Database
+// ============================================================
+
+if (app.Environment.IsDevelopment())
+{
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<AccountingDbContext>();
+    
+    await db.Database.MigrateAsync();
+    await DatabaseSeeder.SeedAsync(db);
+}
+
+// ============================================================
 // Endpoints
 // ============================================================
 
@@ -41,7 +54,6 @@ app.MapGet("/", () => new
     Status = "Running"
 });
 
-// ثبت Endpoints
 app.MapAccountEndpoints();
 app.MapInvoiceEndpoints();
 app.MapJournalEntryEndpoints();
