@@ -33,11 +33,9 @@ app.UseHttpsRedirection();
 // Seed Database
 // ============================================================
 
-if (app.Environment.IsDevelopment())
+using (var scope = app.Services.CreateScope())
 {
-    using var scope = app.Services.CreateScope();
     var db = scope.ServiceProvider.GetRequiredService<AccountingDbContext>();
-    
     await db.Database.MigrateAsync();
     await DatabaseSeeder.SeedAsync(db);
 }
