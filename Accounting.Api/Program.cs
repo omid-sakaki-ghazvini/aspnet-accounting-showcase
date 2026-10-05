@@ -12,6 +12,21 @@ builder.Services.AddDbContext<AccountingDbContext>(options =>
     options.UseSqlite(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// ✅ CORS — این بخش حیاتی است
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReact", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:5173",
+                "http://localhost:5174",
+                "http://127.0.0.1:5173"
+              )
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -27,10 +42,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// ✅ CORS — باید قبل از UseHttpsRedirection باشد
+app.UseCors("AllowReact");
+
 app.UseHttpsRedirection();
 
 // ============================================================
-// Seed Database
+// Seed
 // ============================================================
 
 using (var scope = app.Services.CreateScope())
