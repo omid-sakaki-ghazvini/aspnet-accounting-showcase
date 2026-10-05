@@ -1,0 +1,12 @@
+**/bin/
+**/obj/
+**/.vs/
+**/.vscode/
+**/node_modules/
+**/*.db
+**/*.db-shm
+**/*.db-wal
+**/screenshots/
+**/.git/
+**/.github/
+**/README.md

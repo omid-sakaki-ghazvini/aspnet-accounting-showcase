@@ -1,0 +1,17 @@
+services:
+  accounting-api:
+    build:
+      context: .
+      dockerfile: Accounting.Api/Dockerfile
+    container_name: accounting-api
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Data Source=/app/data/accounting.db
+    volumes:
+      - accounting-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  accounting-data:
