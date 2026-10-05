@@ -27,21 +27,32 @@ This project showcases:
 
 ## 📸 Screenshots
 
-### Swagger API Documentation
-
-![Swagger UI](screenshots/Accounting.Api.png)
-
-### Chart of Accounts (API Response)
-
-![Accounts API](screenshots/api_accounts.png)
-
-### Docker Running
-
-![Docker](screenshots/docker.png)
-
-### Development Environment
-
-![VS Code](screenshots/VSCode.png)
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <strong>📋 Swagger API Documentation</strong><br>
+      <em>Interactive API documentation with all endpoints</em><br><br>
+      <img src="screenshots/Accounting.Api.png" alt="Swagger UI" width="100%">
+    </td>
+    <td width="50%" align="center">
+      <strong>📊 Chart of Accounts</strong><br>
+      <em>25 standard accounting accounts in Persian</em><br><br>
+      <img src="screenshots/api_accounts.png" alt="Accounts API" width="100%">
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <strong>🐳 Docker Container</strong><br>
+      <em>Application running in Docker</em><br><br>
+      <img src="screenshots/docker.png" alt="Docker Desktop" width="100%">
+    </td>
+    <td width="50%" align="center">
+      <strong>💻 Development in VS Code</strong><br>
+      <em>Full development environment</em><br><br>
+      <img src="screenshots/VSCode.png" alt="VS Code" width="100%">
+    </td>
+  </tr>
+</table>
 
 ---
 
